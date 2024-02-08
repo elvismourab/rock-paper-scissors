@@ -6,7 +6,20 @@
     </head>
     <body>
         <script>
+            const hand = {
+                1 : "rock",
+                2 : "paper",
+                3 : "scissors"
+            }
+            
+            /* takes three values randomly shorted and return one of those values */
+            function getComputerChoice(hand) {
+                return hand[Math.floor(Math.random() * hand.length)];
+            }
 
+            /* test getComputerChoice function */
+            let randomHand = getComputerChoice(Object.values(hand));
+            console.log(`Random hand: ${randomHand}`);
         </script>
     </body>
 </html>
