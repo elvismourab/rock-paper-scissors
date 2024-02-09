@@ -7,9 +7,9 @@
     <body>
         <script>
             const hand = {
-                1 : "rock",
+                1 : "scissors",
                 2 : "paper",
-                3 : "scissors"
+                3 : "rock"
             }
             
             /* takes three values randomly shorted and return one of those values */
@@ -24,10 +24,14 @@
             /* this function plays a single round of the game */
             function playRound(playerSelection, computerSelection) {
                 //code ***
-                
+                /* make the parameter case insensitive */
+                playerSelection = playerSelection.toLowerCase();
+                console.log(playerSelection);
             }
 
-            const playerSelection = "rock";
+            const playerSelection = "RoCk";
+            console.log(playerSelection);
+
             const computerSelection = getComputerChoice(hand);
             console.log(playRound(playerSelection, computerSelection));
 
