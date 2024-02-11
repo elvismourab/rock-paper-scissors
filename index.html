@@ -14,16 +14,10 @@
                 return randomHand;
             }
 
-            /* test getComputerChoice function */
-            let pcChoice = getComputerChoice();
-            alert(`pcChoice (getComputerChoice test): ${pcChoice}`);
-
             /* this function plays a single round of the game */
             function playRound(playerSelection, computerSelection) {
-                //code ***
                 /* make the parameter case insensitive */
                 playerSelection = playerSelection.toLowerCase();
-                alert(`playerSelection test: ${playerSelection}`);
 
                 /* compare player choice with computer choice */
                 if (playerSelection === computerSelection) {
@@ -35,17 +29,17 @@
                 } else if (playerSelection === "rock" && computerSelection === "scissors") {
                     return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
                 } else if (computerSelection === "scissors" && playerSelection === "paper") {
-                    return alert(`You Lose! ${playerSelection} beats ${computerSelection}`);
+                    return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 } else if (computerSelection === "paper" && playerSelection === "rock") {
-                    return alert(`You Lose! ${playerSelection} beats ${computerSelection}`);
+                    return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 } else if (computerSelection === "rock" && playerSelection === "scissors") {
-                    return alert(`You Lose! ${playerSelection} beats ${computerSelection}`);
+                    return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 }
             }
 
-            const player = "RoCk";
-
-            alert(playRound(player, pcChoice));
+            const playerSelection = "RoCk";
+            const computerSelection = getComputerChoice();
+            console.log(playRound(playerSelection, computerSelection));
 
         </script>
     </body>
