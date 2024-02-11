@@ -6,7 +6,12 @@
     </head>
     <body>
         <script>
-            
+            /* get player's choice */
+            function getPlayerChoice() {
+                const playerSelection = prompt("Type your choice:\n[rock], [paper] or [scissors] ? ");
+                return playerSelection;
+            }
+
             /* takes one of three values randomly and return one of those values */
             function getComputerChoice() {
                 const hand = ["rock", "paper", "scissors"];
@@ -37,7 +42,7 @@
                 }
             }
 
-            const playerSelection = "RoCk";
+            const playerSelection = getPlayerChoice();
             const computerSelection = getComputerChoice();
             console.log(playRound(playerSelection, computerSelection));
 
