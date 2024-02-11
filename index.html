@@ -30,29 +30,29 @@
 
                 /* compare player choice with computer choice */
                 if (playerSelection === computerSelection) {
-                    return alert(`Draw! ${playerSelection} equals ${computerSelection}`);
+                    return console.log(`Draw! ${playerSelection} equals ${computerSelection}`);
                 } else if (playerSelection === "scissors" && computerSelection === "paper") {
                     player++;
-                    return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    return console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
                 } else if (playerSelection === "paper" && computerSelection === "rock") {
                     player++;
-                    return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    return console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
                 } else if (playerSelection === "rock" && computerSelection === "scissors") {
                     player++;
-                    return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    return console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
                 } else if (computerSelection === "scissors" && playerSelection === "paper") {
                     computer++;
-                    return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 } else if (computerSelection === "paper" && playerSelection === "rock") {
                     computer++;
-                    return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 } else if (computerSelection === "rock" && playerSelection === "scissors") {
                     computer++;
-                    return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 }
             }
 
-            /* This function plays the game 5 times and returns the final winner*/
+            /* this function plays the game 5 times and returns the final winner*/
             function playGame() {
                 for (let i = 0; i < 5; i++) {
                     const playerSelection = getPlayerChoice();
