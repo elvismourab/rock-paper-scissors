@@ -7,7 +7,7 @@
     <body>
         <script>
             
-            /* takes three values randomly shorted and return one of those values */
+            /* takes one of three values randomly and return one of those values */
             function getComputerChoice() {
                 const hand = ["rock", "paper", "scissors"];
                 const randomHand = hand[Math.floor(Math.random() * hand.length)];
@@ -16,20 +16,36 @@
 
             /* test getComputerChoice function */
             let pcChoice = getComputerChoice();
-            alert(`pcChoice: ${pcChoice}`);
+            alert(`pcChoice (getComputerChoice test): ${pcChoice}`);
 
             /* this function plays a single round of the game */
             function playRound(playerSelection, computerSelection) {
                 //code ***
                 /* make the parameter case insensitive */
                 playerSelection = playerSelection.toLowerCase();
-                console.log(playerSelection);
+                alert(`playerSelection test: ${playerSelection}`);
+
+                /* compare player choice with computer choice */
+                if (playerSelection === computerSelection) {
+                    return alert(`Draw! ${playerSelection} equals ${computerSelection}`);
+                } else if (playerSelection === "scissors" && computerSelection === "paper") {
+                    return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                } else if (playerSelection === "paper" && computerSelection === "rock") {
+                    return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                } else if (playerSelection === "rock" && computerSelection === "scissors") {
+                    return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                } else if (computerSelection === "scissors" && playerSelection === "paper") {
+                    return alert(`You Lose! ${playerSelection} beats ${computerSelection}`);
+                } else if (computerSelection === "paper" && playerSelection === "rock") {
+                    return alert(`You Lose! ${playerSelection} beats ${computerSelection}`);
+                } else if (computerSelection === "rock" && playerSelection === "scissors") {
+                    return alert(`You Lose! ${playerSelection} beats ${computerSelection}`);
+                }
             }
 
             const player = "RoCk";
-            console.log(player);
 
-            console.log(playRound(player, pcChoice));
+            alert(playRound(player, pcChoice));
 
         </script>
     </body>
