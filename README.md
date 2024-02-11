@@ -7,5 +7,7 @@ This project is part of **The Odin Project** - Foundations Course.
 - A loop was implemented to prevent the game ending in a draw.
 
 ### About
-[Project: Rock Paper Scissors] (https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
-[elvismourab] (https://github.com/elvismourab)
+[Project: Rock Paper Scissors](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
+
+
+[elvismourab](https://github.com/elvismourab)
