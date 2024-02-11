@@ -30,25 +30,40 @@
 
                 /* compare player choice with computer choice */
                 if (playerSelection === computerSelection) {
-                    return console.log(`Draw! ${playerSelection} equals ${computerSelection}`);
+                    console.log(`Draw! ${playerSelection} equals ${computerSelection}`);
+                    alert(`Draw! ${playerSelection} equals ${computerSelection}`);
+                    return;
+
                 } else if (playerSelection === "scissors" && computerSelection === "paper") {
-                    player++;
-                    return console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    alert(`You Win! ${playerSelection} beats ${computerSelection}`)
+                    return player++;
+
                 } else if (playerSelection === "paper" && computerSelection === "rock") {
-                    player++;
-                    return console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    return player++;
+
                 } else if (playerSelection === "rock" && computerSelection === "scissors") {
-                    player++;
-                    return console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                    return player++;
+
                 } else if (computerSelection === "scissors" && playerSelection === "paper") {
-                    computer++;
-                    return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    return computer++;
+
                 } else if (computerSelection === "paper" && playerSelection === "rock") {
-                    computer++;
-                    return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    return computer++;
+                    
                 } else if (computerSelection === "rock" && playerSelection === "scissors") {
-                    computer++;
-                    return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
+                    return computer++;
+
                 }
             }
 
@@ -61,10 +76,15 @@
                 }
 
                 if (player === computer) {
-                    return console.log("A tie! Play again!")
+                    alert("A tie! Play again!");
+                    return console.log("A tie! Play again!");
+
                 } else if (player > computer) {
+                    alert(`You win the game! Player: ${player} X Computer: ${computer}`);
                     return console.log(`You won the game! Player: ${player} X Computer: ${computer}`);
+
                 } else {
+                    alert(`You lose the game! Player: ${player} X Computer: ${computer}`);
                     return console.log(`You lost the game! Player: ${player} X Computer: ${computer}`);
                 }
             }
