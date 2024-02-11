@@ -6,6 +6,10 @@
     </head>
     <body>
         <script>
+            /* winner counter */
+            let player = 0;
+            let computer = 0;
+
             /* get player's choice */
             function getPlayerChoice() {
                 const playerSelection = prompt("Type your choice:\n[rock], [paper] or [scissors] ? ");
@@ -28,16 +32,22 @@
                 if (playerSelection === computerSelection) {
                     return alert(`Draw! ${playerSelection} equals ${computerSelection}`);
                 } else if (playerSelection === "scissors" && computerSelection === "paper") {
+                    player++;
                     return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
                 } else if (playerSelection === "paper" && computerSelection === "rock") {
+                    player++;
                     return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
                 } else if (playerSelection === "rock" && computerSelection === "scissors") {
+                    player++;
                     return alert(`You Win! ${playerSelection} beats ${computerSelection}`);
                 } else if (computerSelection === "scissors" && playerSelection === "paper") {
+                    computer++;
                     return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 } else if (computerSelection === "paper" && playerSelection === "rock") {
+                    computer++;
                     return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 } else if (computerSelection === "rock" && playerSelection === "scissors") {
+                    computer++;
                     return alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
                 }
             }
@@ -45,6 +55,12 @@
             const playerSelection = getPlayerChoice();
             const computerSelection = getComputerChoice();
             console.log(playRound(playerSelection, computerSelection));
+
+/*             function playGame() {
+                for (let i = 0; i <= 5; i++) {
+                    
+                }
+            } */
 
         </script>
     </body>
