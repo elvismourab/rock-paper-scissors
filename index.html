@@ -6,20 +6,17 @@
     </head>
     <body>
         <script>
-            const hand = {
-                1 : "scissors",
-                2 : "paper",
-                3 : "rock"
-            }
             
             /* takes three values randomly shorted and return one of those values */
-            function getComputerChoice(hand) {
-                return hand[Math.floor(Math.random() * hand.length)];
+            function getComputerChoice() {
+                const hand = ["rock", "paper", "scissors"];
+                const randomHand = hand[Math.floor(Math.random() * hand.length)];
+                return randomHand;
             }
 
             /* test getComputerChoice function */
-            let randomHand = getComputerChoice(Object.values(hand));
-            console.log(`Random hand: ${randomHand}`);
+            let pcChoice = getComputerChoice();
+            alert(`pcChoice: ${pcChoice}`);
 
             /* this function plays a single round of the game */
             function playRound(playerSelection, computerSelection) {
@@ -29,11 +26,10 @@
                 console.log(playerSelection);
             }
 
-            const playerSelection = "RoCk";
-            console.log(playerSelection);
+            const player = "RoCk";
+            console.log(player);
 
-            const computerSelection = getComputerChoice(hand);
-            console.log(playRound(playerSelection, computerSelection));
+            console.log(playRound(player, pcChoice));
 
         </script>
     </body>
