@@ -12,8 +12,22 @@
 
             /* get player's choice */
             function getPlayerChoice() {
-                const playerSelection = prompt("Type your choice:\n[rock], [paper] or [scissors] ? ");
-                return playerSelection;
+                /* const playerSelection = prompt("Type your choice:\n[rock], [paper] or [scissors] ? ");
+                return playerSelection; */
+
+                /* use switch to make it easier for players to answer and eliminate the need of use toLowerCase latter on */
+                let choice = prompt("Select your hand:\n1 - Rock\n2 - Paper\n3 - Scissors");
+                switch(parseInt(choice)) {
+                    case 1 : choice = "rock";
+                    break;
+                    case 2 : choice = "paper";
+                    break;
+                    case 3 : choice = "scissors";
+                    break;
+                    default : alert("Invalid option!");
+                }
+
+                return choice;
             }
 
             /* takes one of three values randomly and return one of those values */
