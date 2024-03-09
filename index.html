@@ -119,6 +119,20 @@
         const paper = document.createElement("button");
         const scissors = document.createElement("button");
 
+        rock.textContent = "ROCK";
+        paper.textContent = "PAPER";
+        scissors.textContent = "SCISSORS";
+
+        rock.addEventListener("click", () => {
+            playRound("rock", getComputerChoice("rock"));
+        });
+        paper.addEventListener("click", () => {
+            playRound("paper", getComputerChoice("paper"));
+        });
+        scissors.addEventListener("click", () => {
+            playRound("scissors", getComputerChoice("scissors"));
+        });
+
         body.appendChild(rock);
         body.appendChild(paper);
         body.appendChild(scissors);
