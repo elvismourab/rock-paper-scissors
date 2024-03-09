@@ -90,7 +90,7 @@
         }
 
         /* this function plays the game 5 times and returns the final winner*/
-        function playGame() {
+/*         function playGame() {
             for (let i = 0; i < 5; i++) {
                 const playerSelection = getPlayerChoice();
                 const computerSelection = getComputerChoice(playerSelection);
@@ -101,7 +101,7 @@
                     alert("A draw! Play again!");
                     return console.log("A draw! Play again!");
 
-                } else  */if (player > computer) {
+                } else //if (player > computer) {
                 alert(`You win the game! Player: ${player} X Computer: ${computer}`);
                 return console.log(`You win the game! Player: ${player} X Computer: ${computer}`);
 
@@ -111,7 +111,17 @@
             }
         }
 
-        playGame();
+        playGame(); */
+
+        const body = document.querySelector("body");
+
+        const rock = document.createElement("button");
+        const paper = document.createElement("button");
+        const scissors = document.createElement("button");
+
+        body.appendChild(rock);
+        body.appendChild(paper);
+        body.appendChild(scissors);
 
     </script>
 </body>
