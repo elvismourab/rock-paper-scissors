@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>rock-paper-scissors</title>
+    <style>
+        div {
+            white-space: pre;
+        }
+    </style>
 </head>
 
 <body>
@@ -56,36 +61,24 @@
                     alert(`Draw! ${playerSelection} equals ${computerSelection}`);
                     return;
 
-                } else  */if (playerSelection === "scissors" && computerSelection === "paper") {
-                console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-                alert(`You Win! ${playerSelection} beats ${computerSelection}`)
-                return player++;
+                } else  */
+            if (playerSelection === "scissors" && computerSelection === "paper") {
+                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
 
             } else if (playerSelection === "paper" && computerSelection === "rock") {
-                console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-                alert(`You Win! ${playerSelection} beats ${computerSelection}`);
-                return player++;
+                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
 
             } else if (playerSelection === "rock" && computerSelection === "scissors") {
-                console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-                alert(`You Win! ${playerSelection} beats ${computerSelection}`);
-                return player++;
+                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
 
             } else if (computerSelection === "scissors" && playerSelection === "paper") {
-                console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-                alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
-                return computer++;
+                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
 
             } else if (computerSelection === "paper" && playerSelection === "rock") {
-                console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-                alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
-                return computer++;
+                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
 
             } else if (computerSelection === "rock" && playerSelection === "scissors") {
-                console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-                alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
-                return computer++;
-
+                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
             }
         }
 
@@ -136,6 +129,12 @@
         body.appendChild(rock);
         body.appendChild(paper);
         body.appendChild(scissors);
+
+        const div = document.createElement("div");
+        const para = document.createElement("p");
+        para.textContent = "RESULTS:";
+        body.appendChild(div);
+        div.appendChild(para);
 
     </script>
 </body>
