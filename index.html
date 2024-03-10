@@ -64,22 +64,33 @@
                 } else  */
             if (playerSelection === "scissors" && computerSelection === "paper") {
                 para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
+                player++;
 
             } else if (playerSelection === "paper" && computerSelection === "rock") {
                 para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
+                player++;
 
             } else if (playerSelection === "rock" && computerSelection === "scissors") {
                 para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
+                player++;
 
             } else if (computerSelection === "scissors" && playerSelection === "paper") {
                 para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
+                computer++;
 
             } else if (computerSelection === "paper" && playerSelection === "rock") {
                 para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
+                computer++;
 
             } else if (computerSelection === "rock" && playerSelection === "scissors") {
                 para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
+                computer++;
+            
             }
+
+            //Update the running score
+            score.textContent = `\r\nPLAYER: ${player} \r\nCOMPUTER: ${computer}`;
+            div.appendChild(score);
         }
 
         /* this function plays the game 5 times and returns the final winner*/
@@ -135,6 +146,11 @@
         para.textContent = "RESULTS:";
         body.appendChild(div);
         div.appendChild(para);
+
+        //Display the running score
+        const score = document.createElement("div");
+        score.textContent = `\r\nPLAYER: ${player} \r\nCOMPUTER: ${computer}`;
+        div.appendChild(score);
 
     </script>
 </body>
