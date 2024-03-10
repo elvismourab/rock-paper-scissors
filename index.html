@@ -31,6 +31,15 @@
             return randomHand;
         }
 
+        //Reset the game
+        function reset() {
+            player = 0;
+            computer = 0
+            para.textContent = "RESULTS:";
+            score.textContent = `\r\nPLAYER: ${player} \r\nCOMPUTER: ${computer}`;
+            div.appendChild(score);
+        }
+
         /* this function plays a single round of the game */
         function playRound(playerSelection, computerSelection) {
 
@@ -63,6 +72,15 @@
             //Update the running score
             score.textContent = `\r\nPLAYER: ${player} \r\nCOMPUTER: ${computer}`;
             div.appendChild(score);
+
+            //Announce the winner once one player reaches  5 points
+            if (player === 5) {
+                alert(`You win the game! Player: ${player} X Computer: ${computer}`);
+                reset();
+            } else if (computer === 5) {
+                alert(`You lose the game! Player: ${player} X Computer: ${computer}`);
+                reset();
+            }
         }
 
         const body = document.querySelector("body");
