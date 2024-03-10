@@ -8,7 +8,7 @@
         body {
             text-align: center;
         }
-        
+
         div {
             white-space: pre;
             border: 2px solid blue;
@@ -50,7 +50,7 @@
         function reset() {
             player = 0;
             computer = 0
-            para.textContent = "RESULTS:";
+            para.textContent = "RESULTS:\r\n";
             score.textContent = `\r\nPLAYER: ${player} \r\nCOMPUTER: ${computer}`;
             div.appendChild(score);
         }
@@ -59,27 +59,27 @@
         function playRound(playerSelection, computerSelection) {
 
             if (playerSelection === "scissors" && computerSelection === "paper") {
-                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
+                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}\n`;
                 player++;
 
             } else if (playerSelection === "paper" && computerSelection === "rock") {
-                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
+                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}\n`;
                 player++;
 
             } else if (playerSelection === "rock" && computerSelection === "scissors") {
-                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}`;
+                para.textContent += `\r\nYou Win! ${playerSelection} beats ${computerSelection}\n`;
                 player++;
 
             } else if (computerSelection === "scissors" && playerSelection === "paper") {
-                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
+                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}\n`;
                 computer++;
 
             } else if (computerSelection === "paper" && playerSelection === "rock") {
-                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
+                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}\n`;
                 computer++;
 
             } else if (computerSelection === "rock" && playerSelection === "scissors") {
-                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}`;
+                para.textContent += `\r\nYou Lose! ${computerSelection} beats ${playerSelection}\n`;
                 computer++;
             
             }
@@ -90,10 +90,10 @@
 
             //Announce the winner once one player reaches  5 points
             if (player === 5) {
-                alert(`You win the game! Player: ${player} X Computer: ${computer}`);
+                alert(`\nYOU WIN!\nPlayer: ${player}\nComputer: ${computer}`);
                 reset();
             } else if (computer === 5) {
-                alert(`You lose the game! Player: ${player} X Computer: ${computer}`);
+                alert(`YOU LOSE!\nPlayer: ${player}\nComputer: ${computer}`);
                 reset();
             }
         }
@@ -124,7 +124,7 @@
 
         const div = document.createElement("div");
         const para = document.createElement("p");
-        para.textContent = "RESULTS:";
+        para.textContent = "RESULTS:\r\n";
         body.appendChild(div);
         div.appendChild(para);
 
