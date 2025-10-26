@@ -1,8 +1,14 @@
+const jankenpon = {
+    ROCK: 'rock',
+    PAPER: 'paper',
+    SCISSORS: 'scissors',
+}
+
 function getComputerChoice() {
     let random = Math.random();
-    if (random <= 0.33) return 'rock';
-    if (random >= 0.66) return 'paper';
-    return 'scissors';
+    if (random <= 0.33) return jankenpon.ROCK;
+    if (random >= 0.66) return jankenpon.PAPER;
+    return jankenpon.SCISSORS;
 }
 
 function getHumanChoice() {
@@ -27,27 +33,27 @@ function playGame() {
         scissors + paper = scissors
         scissors + scissors = draw
         */
-        if (humanChoice === 'rock' && computerChoice === 'paper') {
+        if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.PAPER) {
             computerScore++;
             return console.log('You lose!Paper beats Rock');
         }
-        if (humanChoice === 'paper' && computerChoice === 'rock') {
+        if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.ROCK) {
             humanScore++;
             return console.log('You win!Paper beats Rock');
         }
-        if (humanChoice === 'scissors' && computerChoice === 'rock') {
+        if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.ROCK) {
             computerScore++;
             return console.log('You lose!Rock beats Scissors');
         }
-        if (humanChoice === 'rock' && computerChoice === 'scissors') {
+        if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.SCISSORS) {
             humanScore++;
             return console.log('You win!Rock beats Scissors');
         }
-        if (humanChoice === 'paper' && computerChoice === 'scissors') {
+        if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.SCISSORS) {
             computerScore++;
             return console.log('You lose!Scissors beats Paper');
         }
-        if (humanChoice === 'scissors' && computerChoice === 'paper') {
+        if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.PAPER) {
             humanScore++;
             return console.log('You win!Scissors beats Paper');
         }
