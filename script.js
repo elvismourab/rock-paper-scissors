@@ -60,21 +60,11 @@ function playGame() {
         return console.log("It's a draw!");
     }
 
-    while (humanScore < 5 || computerScore < 5) {
-        console.log('humanScore: ', humanScore);
-        console.log('computerScore: ', computerScore);
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        if (humanScore === 5) {
-            alert('Congratulations! You win!');
-            break;
-        }
-        if (computerScore === 5) {
-            alert('Game Over! Computer wins!');
-            break;
-        }
-    };
+    console.log('humanScore: ', humanScore);
+    console.log('computerScore: ', computerScore);
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
 }
 
 playGame();
