@@ -1,3 +1,12 @@
+const buttons = document.querySelectorAll('#options');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        const humanSelection = e.target.value;
+        playGame(humanSelection);
+    });
+});
+
 const jankenpon = {
     ROCK: 'rock',
     PAPER: 'paper',
@@ -16,7 +25,7 @@ function getHumanChoice() {
     return choice.trim().toLowerCase();
 }
 
-function playGame() {
+function playGame(humanSelection) {
 
     let humanScore = 0;
     let computerScore = 0;
@@ -35,36 +44,31 @@ function playGame() {
         */
         if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.PAPER) {
             computerScore++;
-            return console.log('You lose!Paper beats Rock');
+            return console.log('You lose! Paper beats Rock');
         }
         if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.ROCK) {
             humanScore++;
-            return console.log('You win!Paper beats Rock');
+            return console.log('You win! Paper beats Rock');
         }
         if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.ROCK) {
             computerScore++;
-            return console.log('You lose!Rock beats Scissors');
+            return console.log('You lose! Rock beats Scissors');
         }
         if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.SCISSORS) {
             humanScore++;
-            return console.log('You win!Rock beats Scissors');
+            return console.log('You win! Rock beats Scissors');
         }
         if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.SCISSORS) {
             computerScore++;
-            return console.log('You lose!Scissors beats Paper');
+            return console.log('You lose! Scissors beats Paper');
         }
         if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.PAPER) {
             humanScore++;
-            return console.log('You win!Scissors beats Paper');
+            return console.log('You win! Scissors beats Paper');
         }
         return console.log("It's a draw!");
     }
 
-    console.log('humanScore: ', humanScore);
-    console.log('computerScore: ', computerScore);
-    const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
 }
-
-playGame();
