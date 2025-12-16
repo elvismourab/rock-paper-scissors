@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 const buttons = document.querySelectorAll('#options');
 
 buttons.forEach((button) => {
@@ -20,55 +23,58 @@ function getComputerChoice() {
     return jankenpon.SCISSORS;
 }
 
-function getHumanChoice() {
-    let choice = prompt('What is your choice?');
-    return choice.trim().toLowerCase();
-}
-
 function playGame(humanSelection) {
+    const playRound = (humanChoice, computerChoice) => {
+        let result = '';
 
-    let humanScore = 0;
-    let computerScore = 0;
-
-    let playRound = (humanChoice, computerChoice) => {
-        /* 
-        rock + paper = paper
-        rock + scissors = rock
-        rock + rock = draw
-        paper + rock = paper
-        paper + scissors = scissors
-        paper + paper = draw
-        scissors + rock = rock
-        scissors + paper = scissors
-        scissors + scissors = draw
-        */
         if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.PAPER) {
             computerScore++;
-            return console.log('You lose! Paper beats Rock');
+            result = 'You lose! Paper beats Rock';
         }
-        if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.ROCK) {
-            humanScore++;
-            return console.log('You win! Paper beats Rock');
+        else if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.ROCK) {
+            playerScore++;
+            result = 'You win! Paper beats Rock';
         }
-        if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.ROCK) {
+        else if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.ROCK) {
             computerScore++;
-            return console.log('You lose! Rock beats Scissors');
+            result = 'You lose! Rock beats Scissors';
         }
-        if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.SCISSORS) {
-            humanScore++;
-            return console.log('You win! Rock beats Scissors');
+        else if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.SCISSORS) {
+            playerScore++;
+            result = 'You win! Rock beats Scissors';
         }
-        if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.SCISSORS) {
+        else if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.SCISSORS) {
             computerScore++;
-            return console.log('You lose! Scissors beats Paper');
+            result = 'You lose! Scissors beats Paper';
         }
-        if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.PAPER) {
-            humanScore++;
-            return console.log('You win! Scissors beats Paper');
+        else if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.PAPER) {
+            playerScore++;
+            result = 'You win! Scissors beats Paper';
         }
-        return console.log("It's a draw!");
+        else {
+            result = "It's a draw!";
+        }
+
+        return result;
     }
 
     const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
+    console.log('computerSelection: ', computerSelection);
+    let result = playRound(humanSelection, computerSelection);
+
+    // Falta limpar o conteúdo a cada jogo, ao invés de empilhar parágrafos no score.
+
+    const score = document.getElementById('score');
+    score
+    let p1 = document.createElement('p');
+    let p2 = document.createElement('p');
+    let p3 = document.createElement('p');
+    p1.textContent = result;
+    p2.textContent = `Player: ${playerScore}`;
+    p3.textContent = `Computer: ${computerScore}`;
+
+    score.appendChild(p1);
+    score.appendChild(p2);
+    score.appendChild(p3);
+
 }
