@@ -65,6 +65,7 @@ function playGame(humanSelection) {
     // Falta limpar o conteúdo a cada jogo, ao invés de empilhar parágrafos no score.
 
     const score = document.getElementById('score');
+    score.textContent = '';
     score
     let p1 = document.createElement('p');
     let p2 = document.createElement('p');
