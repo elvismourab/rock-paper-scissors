@@ -1,0 +1,21 @@
+:root {
+    --var-color-1: dbf73b;
+    --var-color-2: c0cc39;
+    --var-color-3: eb0258;
+    --var-color-4: a6033f;
+    --var-color-5: 2b2628;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#options {
+    display: flex;
+    gap: 2rem;
+    margin: 4rem;
+    padding: 4rem;
+    border: 2px solid blue;
+}

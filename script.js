@@ -65,14 +65,14 @@ function playGame(humanSelection) {
         let p1 = document.createElement('p');
         let p2 = document.createElement('p');
         let p3 = document.createElement('p');
-        let h1 = document.createElement('h1');
+        let h2 = document.createElement('h2');
         p1.textContent = result;
         p2.textContent = `Player: ${playerScore}`;
         p3.textContent = `Computer: ${computerScore}`;
 
         if (playerScore >= 5 || computerScore >= 5) {
             let winner = playerScore > computerScore ? 'YOU' : 'COMPUTER';
-            h1.textContent = `${winner} WIN!`;
+            h2.textContent = `${winner} WIN!`;
             playerScore = 0;
             computerScore = 0;
         }
@@ -80,7 +80,7 @@ function playGame(humanSelection) {
         score.appendChild(p1);
         score.appendChild(p2);
         score.appendChild(p3);
-        score.appendChild(h1);
+        score.appendChild(h2);
     }
 
     const computerSelection = getComputerChoice();
