@@ -1,89 +1,101 @@
 let playerScore = 0;
 let computerScore = 0;
+let gameEnded = false;
 
-const jankenpon = {
-    ROCK: 'rock',
-    PAPER: 'paper',
-    SCISSORS: 'scissors',
-}
+const choices = ['rock', 'paper', 'scissors'];
 
-const buttons = document.querySelectorAll('#options');
+// UI Elements
+const playerScoreDisplay = document.getElementById('player-score');
+const computerScoreDisplay = document.getElementById('computer-score');
+const resultMessageDisplay = document.getElementById('result-message');
+const finalWinnerDisplay = document.getElementById('final-winner');
+const buttons = document.querySelectorAll('.btn');
 
+// --- Event Listeners ---
 buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        const humanSelection = e.target.value;
-        playGame(humanSelection);
+    button.addEventListener('click', () => {
+        if (gameEnded) {
+            resetGame();
+        }
+        playRound(button.value, getComputerChoice());
     });
 });
 
-function playGame(humanSelection) {
-    const getComputerChoice = function () {
-        let random = Math.random();
-        if (random <= 0.33) return jankenpon.ROCK;
-        if (random >= 0.66) return jankenpon.PAPER;
-        return jankenpon.SCISSORS;
+/**
+ * Gets a random choice for the computer.
+ * @returns {string} The computer's choice.
+ */
+function getComputerChoice() {
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
+
+/**
+ * Plays a single round of Rock, Paper, Scissors.
+ * @param {string} humanChoice - The player's choice.
+ * @param {string} computerChoice - The computer's choice.
+ */
+function playRound(humanChoice, computerChoice) {
+    let result = `🤖 Computer chose ${computerChoice}! `;
+
+    if (humanChoice === computerChoice) {
+        result += "It's a draw!";
+    } else if (
+        (humanChoice === 'rock' && computerChoice === 'scissors') ||
+        (humanChoice === 'paper' && computerChoice === 'rock') ||
+        (humanChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+        playerScore++;
+        result += 'You win! ' + capitalize(humanChoice) + ' beats ' + computerChoice;
+    } else {
+        computerScore++;
+        result += 'You lose! ' + capitalize(computerChoice) + ' beats ' + humanChoice;
     }
 
-    const playRound = (humanChoice, computerChoice) => {
-        let result = `🤖 Computer chooses ${computerChoice}! `;
+    updateUI(result);
+    checkForWinner();
+}
 
-        if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.PAPER) {
-            computerScore++;
-            result += 'You lose! Paper beats Rock';
-        }
-        else if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.ROCK) {
-            playerScore++;
-            result += 'You win! Paper beats Rock';
-        }
-        else if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.ROCK) {
-            computerScore++;
-            result += 'You lose! Rock beats Scissors';
-        }
-        else if (humanChoice === jankenpon.ROCK && computerChoice === jankenpon.SCISSORS) {
-            playerScore++;
-            result += 'You win! Rock beats Scissors';
-        }
-        else if (humanChoice === jankenpon.PAPER && computerChoice === jankenpon.SCISSORS) {
-            computerScore++;
-            result += 'You lose! Scissors beats Paper';
-        }
-        else if (humanChoice === jankenpon.SCISSORS && computerChoice === jankenpon.PAPER) {
-            playerScore++;
-            result += 'You win! Scissors beats Paper';
-        }
-        else {
-            result += "It's a draw!";
-        }
+/**
+ * Updates the UI with the current scores and result message.
+ * @param {string} result - The message from the round.
+ */
+function updateUI(result) {
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+    resultMessageDisplay.textContent = result;
+}
 
-        return result;
+/**
+ * Checks if either player has reached 5 points.
+ */
+function checkForWinner() {
+    if (playerScore >= 5 || computerScore >= 5) {
+        const winner = playerScore > computerScore ? 'YOU' : 'COMPUTER';
+        finalWinnerDisplay.textContent = `${winner} WIN THE GAME!`;
+        gameEnded = true;
+        resultMessageDisplay.textContent = 'Click any button to play again.';
     }
+}
 
-    const displayScore = (result) => {
-        const score = document.getElementById('score');
-        score.textContent = '';
-        score
-        let p1 = document.createElement('p');
-        let p2 = document.createElement('p');
-        let p3 = document.createElement('p');
-        let h2 = document.createElement('h2');
-        p1.textContent = result;
-        p2.textContent = `Player: ${playerScore}`;
-        p3.textContent = `Computer: ${computerScore}`;
+/**
+ * Resets the game to its initial state.
+ */
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    gameEnded = false;
+    playerScoreDisplay.textContent = '0';
+    computerScoreDisplay.textContent = '0';
+    resultMessageDisplay.textContent = 'Choose your weapon!';
+    finalWinnerDisplay.textContent = '';
+}
 
-        if (playerScore >= 5 || computerScore >= 5) {
-            let winner = playerScore > computerScore ? 'YOU' : 'COMPUTER';
-            h2.textContent = `${winner} WIN!`;
-            playerScore = 0;
-            computerScore = 0;
-        }
-
-        score.appendChild(p1);
-        score.appendChild(p2);
-        score.appendChild(p3);
-        score.appendChild(h2);
-    }
-
-    const computerSelection = getComputerChoice();
-    let result = playRound(humanSelection, computerSelection);
-    displayScore(result);
+/**
+ * Capitalizes the first letter of a string.
+ * @param {string} str
+ * @returns {string}
+ */
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }

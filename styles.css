@@ -1,54 +1,107 @@
 :root {
-    --var-color-1: dbf73b;
-    --var-color-2: c0cc39;
-    --var-color-3: eb0258;
-    --var-color-4: a6033f;
-    --var-color-5: 2b2628;
+    --color-green-bright: #76ff03;
+    --color-green-dark: #33691e;
+    --color-amber: #ffb300;
+    --color-dark: #121212;
+    --color-scanline: rgba(0, 0, 0, 0.2);
 }
 
 * {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'VT323', 'Courier New', Courier, monospace;
     box-sizing: border-box;
-    background-color: red;
+    color: var(--color-green-bright);
 }
 
 body {
+    background-color: var(--color-dark);
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Adiciona efeito de scanline de monitor antigo */
+body::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+        0deg,
+        var(--color-scanline) 0,
+        var(--color-scanline) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 10;
 }
 
 #options {
     display: flex;
     gap: 2rem;
-    margin: 4rem;
-    padding: 4rem;
-    border: 2px solid blue;
+    margin: 2rem;
+    padding: 2rem;
+    border: 2px solid var(--color-green-bright);
+    background-color: var(--color-dark);
 }
 
 .btn {
-    padding: 4rem;
-    border-radius: 50%;
-    box-shadow: 1rem 1rem;
+    padding: 2rem;
+    border: 2px solid var(--color-green-bright);
+    background-color: var(--color-dark);
+    box-shadow: 4px 4px 0px var(--color-green-dark);
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
 }
 
 .btn:hover {
-    background-color: red;
+    background-color: var(--color-green-dark);
+    box-shadow: 2px 2px 0px var(--color-green-dark);
+    transform: translate(2px, 2px);
+}
+
+.btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
 }
 
 #score {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 2rem;
-    border: 2rem ridge yellow;
-    height: 22rem;
-    width: 42rem;
-    flex: 0 0 auto;
+    border: 4px ridge var(--color-green-bright);
+    height: 18rem;
+    width: 36rem;
+    background-color: var(--color-dark);
+    text-align: center;
 }
 
-#options,
-#score,
+#result-message {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    min-height: 2em;
+}
+
 p {
-    background-color: lightblue;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+h1, h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--color-green-dark);
+}
+
+#player-score, #computer-score {
+    font-size: 2rem;
+    color: var(--color-amber);
+    text-shadow: 2px 2px 0px var(--color-dark);
 }
