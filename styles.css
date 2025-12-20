@@ -17,28 +17,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    min-height: 100vh;
 }
 
 /* Adiciona efeito de scanline de monitor antigo */
 body::after {
     content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
     width: 100%;
     height: 100%;
-    background-image: repeating-linear-gradient(
-        0deg,
-        var(--color-scanline) 0,
-        var(--color-scanline) 1px,
-        transparent 1px,
-        transparent 2px
-    );
+    background-image: repeating-linear-gradient(0deg,
+            var(--color-scanline) 0,
+            var(--color-scanline) 1px,
+            transparent 1px,
+            transparent 2px);
     pointer-events: none;
-    z-index: 10;
 }
 
 #options {
@@ -47,16 +39,16 @@ body::after {
     margin: 2rem;
     padding: 2rem;
     border: 2px solid var(--color-green-bright);
-    background-color: var(--color-dark);
 }
 
 .btn {
-    padding: 2rem;
+    padding: 1rem 0rem 1rem 0rem;
     border: 2px solid var(--color-green-bright);
     background-color: var(--color-dark);
     box-shadow: 4px 4px 0px var(--color-green-dark);
-    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
     cursor: pointer;
+    width: 6rem;
+    font-size: 4rem;
 }
 
 .btn:hover {
@@ -73,13 +65,10 @@ body::after {
 #score {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 2rem;
     border: 4px ridge var(--color-green-bright);
-    height: 18rem;
-    width: 36rem;
-    background-color: var(--color-dark);
+    height: 35rem;
+    width: 45rem;
     text-align: center;
 }
 
@@ -94,13 +83,15 @@ p {
     font-size: 1.2rem;
 }
 
-h1, h2 {
+h1,
+h2 {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 2px 2px 0px var(--color-green-dark);
 }
 
-#player-score, #computer-score {
+#player-score,
+#computer-score {
     font-size: 2rem;
     color: var(--color-amber);
     text-shadow: 2px 2px 0px var(--color-dark);

@@ -2,7 +2,7 @@ let playerScore = 0;
 let computerScore = 0;
 let gameEnded = false;
 
-const choices = ['rock', 'paper', 'scissors'];
+const choices = ['ROCK', 'PAPER', 'SCISSORS'];
 
 // UI Elements
 const playerScoreDisplay = document.getElementById('player-score');
@@ -41,15 +41,15 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         result += "It's a draw!";
     } else if (
-        (humanChoice === 'rock' && computerChoice === 'scissors') ||
-        (humanChoice === 'paper' && computerChoice === 'rock') ||
-        (humanChoice === 'scissors' && computerChoice === 'paper')
+        (humanChoice === 'ROCK' && computerChoice === 'SCISSORS') ||
+        (humanChoice === 'PAPER' && computerChoice === 'ROCK') ||
+        (humanChoice === 'SCISSORS' && computerChoice === 'PAPER')
     ) {
         playerScore++;
-        result += 'You win! ' + capitalize(humanChoice) + ' beats ' + computerChoice;
+        result += 'You win! ' + humanChoice + ' beats ' + computerChoice + '!';
     } else {
         computerScore++;
-        result += 'You lose! ' + capitalize(computerChoice) + ' beats ' + humanChoice;
+        result += 'You lose! ' + computerChoice + ' beats ' + humanChoice + '!';
     }
 
     updateUI(result);
@@ -89,13 +89,4 @@ function resetGame() {
     computerScoreDisplay.textContent = '0';
     resultMessageDisplay.textContent = 'Choose your weapon!';
     finalWinnerDisplay.textContent = '';
-}
-
-/**
- * Capitalizes the first letter of a string.
- * @param {string} str
- * @returns {string}
- */
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
 }
