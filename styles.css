@@ -62,14 +62,25 @@ body::after {
     box-shadow: none;
 }
 
-#score {
+#display {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     border: 4px ridge var(--color-green-bright);
     height: 35rem;
     width: 45rem;
     text-align: center;
+}
+
+#computer-choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 4px ridge var(--color-green-bright);
+    height: 10rem;
+    width: 10rem;
+    font-size: 4rem;
 }
 
 #result-message {

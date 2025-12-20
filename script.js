@@ -4,14 +4,13 @@ let gameEnded = false;
 
 const choices = ['ROCK', 'PAPER', 'SCISSORS'];
 
-// UI Elements
 const playerScoreDisplay = document.getElementById('player-score');
 const computerScoreDisplay = document.getElementById('computer-score');
+const computerChoiceDisplay = document.getElementById('computer-choice');
 const resultMessageDisplay = document.getElementById('result-message');
 const finalWinnerDisplay = document.getElementById('final-winner');
 const buttons = document.querySelectorAll('.btn');
 
-// --- Event Listeners ---
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if (gameEnded) {
@@ -21,20 +20,11 @@ buttons.forEach((button) => {
     });
 });
 
-/**
- * Gets a random choice for the computer.
- * @returns {string} The computer's choice.
- */
 function getComputerChoice() {
     const randomIndex = Math.floor(Math.random() * choices.length);
     return choices[randomIndex];
 }
 
-/**
- * Plays a single round of Rock, Paper, Scissors.
- * @param {string} humanChoice - The player's choice.
- * @param {string} computerChoice - The computer's choice.
- */
 function playRound(humanChoice, computerChoice) {
     let result = `🤖 Computer chose ${computerChoice}! `;
 
@@ -52,23 +42,17 @@ function playRound(humanChoice, computerChoice) {
         result += 'You lose! ' + computerChoice + ' beats ' + humanChoice + '!';
     }
 
-    updateUI(result);
+    updateUI(computerChoice, result);
     checkForWinner();
 }
 
-/**
- * Updates the UI with the current scores and result message.
- * @param {string} result - The message from the round.
- */
-function updateUI(result) {
+function updateUI(computerChoice, result) {
     playerScoreDisplay.textContent = playerScore;
     computerScoreDisplay.textContent = computerScore;
+    computerChoiceDisplay.textContent = getComputerEmoji(computerChoice);
     resultMessageDisplay.textContent = result;
 }
 
-/**
- * Checks if either player has reached 5 points.
- */
 function checkForWinner() {
     if (playerScore >= 5 || computerScore >= 5) {
         const winner = playerScore > computerScore ? 'YOU' : 'COMPUTER';
@@ -78,9 +62,6 @@ function checkForWinner() {
     }
 }
 
-/**
- * Resets the game to its initial state.
- */
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
@@ -89,4 +70,10 @@ function resetGame() {
     computerScoreDisplay.textContent = '0';
     resultMessageDisplay.textContent = 'Choose your weapon!';
     finalWinnerDisplay.textContent = '';
+}
+
+function getComputerEmoji(computerChoice) {
+    if (computerChoice === 'ROCK') return '✊';
+    if (computerChoice === 'PAPER') return '✋';
+    if (computerChoice === 'SCISSORS') return '✌️';
 }
